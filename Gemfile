@@ -17,5 +17,3 @@ group :development, :test do
   gem 'pry'
   gem 'capybara'
 end
-
-

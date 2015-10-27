@@ -81,5 +81,3 @@ test:
 production:
   <<: *default
   database: oauth-workshop_production
-  username: oauth-workshop
-  password: <%= ENV['OAUTH-WORKSHOP_DATABASE_PASSWORD'] %>
