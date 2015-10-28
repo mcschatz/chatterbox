@@ -12,6 +12,7 @@ gem "omniauth-twitter"
 gem 'bootstrap-sass', '~> 3.3.5'
 gem 'bootstrap_form'
 gem 'figaro'
+gem 'twitter'
 
 group :development, :test do
   gem 'pry'
