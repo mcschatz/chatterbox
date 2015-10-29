@@ -1,19 +1,23 @@
 <h1>Latest Tweets</h1>
-<% @feed.each do |tweet| %>
-<div class="panel panel-default">
-  <div class="panel-heading">
-    <%= image_tag tweet.user.profile_image_url %>
-    <span><strong>@<%= link_to tweet.user.screen_name, "https://twitter.com/#{tweet.user.screen_name}" %></span></strong>
+<br>
+  <div class="card-columns">
+    <% @feed.each do |tweet| %>
+    <div class="card card-block" style="background-color: #E5FFFF; border-color: #C9C9C9;">
+      <h4 class="card-title">
+        <%= image_tag tweet.user.profile_image_url %>
+        <span><strong>@<%= link_to tweet.user.screen_name, "https://twitter.com/#{tweet.user.screen_name}" %></span></strong>
+      </div>
+    </h4>
+    <div class="card-text" style="background-color: #FFFFFF; border-color: #C9C9C9;">
+        <p><%= tweet.full_text %></p>
+        <span class="favorite"><%= link_to(favorites_path(tweet_id: tweet.id), method: :post) do %></span>
+          <span class="glyphicon glyphicon-star-empty" style="padding: 20px"> <%= tweet.favorite_count%></span>
+        <% end %>
+        <span class="retweet"><%= link_to(retweets_path(tweet_id: tweet.id), method: :post) do %></span>
+          <span class="glyphicon glyphicon-retweet" style="padding: 20px"> <%= tweet.retweet_count%></span>
+        <% end %>
+        <span class="unfollow" style="padding: 20px"><%= link_to("Unfollow", unfollow_path(user_id: tweet.user.id), method: :post) %></span>
+    <% end %>
+    </div>
+   </div>
   </div>
-  <div class="panel-body">
-    <p><%= tweet.full_text %></p>
-      <span class="favorite"><%= link_to(favorites_path(tweet_id: tweet.id), method: :post) do %></span>
-        <span class="glyphicon glyphicon-star-empty" style="padding: 20px"> <%= tweet.favorite_count%></span>
-      <% end %>
-      <span class="retweet"><%= link_to(retweets_path(tweet_id: tweet.id), method: :post) do %></span>
-        <span class="glyphicon glyphicon-retweet" style="padding: 20px"> <%= tweet.retweet_count%></span>
-      <% end %>
-      <span class="unfollow" style="padding: 20px"><%= link_to("Unfollow", unfollow_path(user_id: tweet.user.id), method: :post) %></span>
-  </div>
-<% end %>
-</div>

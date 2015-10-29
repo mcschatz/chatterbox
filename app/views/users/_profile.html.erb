@@ -1,8 +1,10 @@
-<div class="panel-heading">
+<br>
+<div class="card card-block" style="background-color: #E5FFFF; border-color: #333">
+  <h4 class="card-title">
     <%= image_tag @user.profile_image_url %>
     <span><strong>@<%= link_to @user.screen_name, "https://twitter.com/#{@user.screen_name}" %></strong></span>
 </div>
-<div class="panel-body">
+<p blockquote class="card-blockquote" style="border-color: #333;">
   <h5>
     <ul>
       <span style="padding: 20px">Tweets: <%= @user.tweets_count %></span>
@@ -14,4 +16,4 @@
       <span style="padding: 20px">Location: <%= @user.location %></span>
     </ul>
   </h5>
-</div>
+</p>
