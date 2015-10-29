@@ -1,13 +1,14 @@
-<div class="well bs-component">
+<br>
+<div class="card card-block">
   <%= form_for :tweet, url: tweets_path do |f| %>
     <fieldset>
       <div class="form-group">
-        <label for="textArea" class="col-lg-2 control-label">Compose New Tweet</label>
+        <label for="textArea" class="col-lg-2 control-label">New Tweet</label>
         <div class="col-lg-10">
-          <textarea name="tweet" class="form-control control" rows="3" id="textArea"></textarea>
+          <textarea name="tweet" class="form-control control" rows="3"></textarea>
         </div>
+          <%= f.submit "Tweet!", class: "btn btn-primary" %></span>
       </div>
-          <span class="padding-top: 20px"><%= f.submit "Tweet!", class: "btn btn-primary" %></span>
     </fieldset>
   <% end %>
 </div>

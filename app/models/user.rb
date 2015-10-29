@@ -25,8 +25,4 @@ class User < ActiveRecord::Base
       config.access_token_secret = oauth_token_secret
     end
   end
-
-  def reply(user)
-    connection.in_reply_to_user_id(user)
-  end
 end
