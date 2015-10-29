@@ -50,10 +50,10 @@
               <span class="glyphicon glyphicon-share-alt" style="padding: 20px"></span>
             <% end %>
             <span class="favorite"><%= link_to(favorites_path(tweet_id: tweet.id), method: :post) do %></span>
-              <span class="glyphicon glyphicon-star-empty" style="padding: 20px"></span>
+              <span class="glyphicon glyphicon-star-empty" style="padding: 20px"> <%= tweet.favorite_count%></span>
             <% end %>
             <span class="retweet"><%= link_to(retweets_path(tweet_id: tweet.id), method: :post) do %></span>
-              <span class="glyphicon glyphicon-retweet" style="padding: 20px"></span>
+              <span class="glyphicon glyphicon-retweet" style="padding: 20px"> <%= tweet.retweet_count%></span>
             <% end %>
         </div>
       <% end %>
