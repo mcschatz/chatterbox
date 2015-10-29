@@ -8,9 +8,9 @@
         </div>
         <div class="panel-body">
           <h4>
-            <span>Following: <%= current_user.friends_count %></span>
-            <span>Followers: <%= current_user.follower_count %></span>
-            <span>Tweets: <%= current_user.tweet_count %></span>
+            <span style="padding: 20px">Tweets: <%= current_user.tweet_count %></span>
+            <span style="padding: 20px">Following: <%= current_user.friends_count %></span>
+            <span style="padding: 20px">Followers: <%= current_user.follower_count %></span>
           </h4>
         </div>
       </div>
@@ -40,11 +40,20 @@
       <div class="panel panel-default">
         <div class="panel-heading">
              <%= image_tag tweet.user.profile_image_url %>
-             <span><strong><%= tweet.user.screen_name %></span></strong>
-             <%= button_to "Unfollow", unfollow_path(id: tweet.user.id) %>
+             <span><strong>@<%= link_to tweet.user.screen_name, "https://twitter.com/#{tweet.user.screen_name}" %></span></strong>
         </div>
         <div class="panel-body">
           <p><%= tweet.full_text %></p>
+            <span class="unfollow"><%= link_to "Unfollow", unfollow_path(user_id: tweet.user.id) %></span>
+            <span class="reply"><%= link_to(replies_path(user_id: tweet.user.id), method: :post) do %></span>
+              <span class="glyphicon glyphicon-share-alt" style="padding: 20px"></span>
+            <% end %>
+            <span class="favorite"><%= link_to favorites_path(tweet_id: tweet.id) do %></span>
+              <span class="glyphicon glyphicon-star-empty" style="padding: 20px"></span>
+            <% end %>
+            <span class="retweet"><%= link_to(retweets_path(tweet_id: tweet.id), method: :post) do %></span>
+              <span class="glyphicon glyphicon-retweet" style="padding: 20px"></span>
+            <% end %>
         </div>
       <% end %>
     </div>

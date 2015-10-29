@@ -41,4 +41,8 @@ class TwitterService
   def unfollow(friend)
     connection.unfollow(friend)
   end
+
+  def reply(user)
+    connection.in_reply_to_user_id(user)
+  end
 end
