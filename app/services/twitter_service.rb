@@ -14,10 +14,6 @@ class TwitterService
     connection.home_timeline
   end
 
-  def user_timeline
-    connection.user.user_timeline
-  end
-
   def follower_count
     connection.user.followers_count
   end
@@ -28,10 +24,6 @@ class TwitterService
 
   def friends_count
     connection.user.friends_count
-  end
-
-  def mentions
-    connection.mentions_timeline
   end
 
   def tweet(tweet)

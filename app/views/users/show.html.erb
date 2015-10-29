@@ -1,7 +1,7 @@
 <section id="intro" class="intro-section">
   <div class="row">
     <div class="col-md-6 col-md-offset-3">
-      <div class="panel panel-info basic-info">
+      <div class="panel panel-default">
         <div class="panel-heading">
             <%= image_tag current_user.image %>
             <span><strong>@<%= link_to current_user.screen_name, "https://twitter.com/#{current_user.screen_name}" %></strong></span>
@@ -40,7 +40,7 @@
       <div class="panel panel-default">
         <div class="panel-heading">
              <%= image_tag tweet.user.profile_image_url %>
-             <span><strong><%= tweet.user.name %></span></strong>
+             <span><strong><%= tweet.user.screen_name %></span></strong>
         </div>
         <div class="panel-body">
           <p><%= tweet.full_text %></p>
