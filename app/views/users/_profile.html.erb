@@ -3,12 +3,15 @@
     <span><strong>@<%= link_to @user.screen_name, "https://twitter.com/#{@user.screen_name}" %></strong></span>
 </div>
 <div class="panel-body">
-  <h4>
-    <span style="padding: 20px">Tweets: <%= @user.tweets_count %></span>
-    <span style="padding: 20px">Following: <%= @user.friends_count %></span>
-    <span style="padding: 20px">Followers: <%= @user.followers_count %></span>
-    <span style="padding: 20px">Description: <%= @user.description %></span>
-    <span style="padding: 20px">Location: <%= @user.location %></span>
-    <span style="padding: 20px">Followers: <%= @user.followers_count %></span>
-  </h4>
+  <h5>
+    <ul>
+      <span style="padding: 20px">Tweets: <%= @user.tweets_count %></span>
+      <span style="padding: 20px">Following: <%= @user.friends_count %></span>
+      <span style="padding: 20px">Followers: <%= @user.followers_count %></span>
+    </ul>
+    <ul>
+      <span style="padding: 20px">Description: <%= @user.description %></span>
+      <span style="padding: 20px">Location: <%= @user.location %></span>
+    </ul>
+  </h5>
 </div>
