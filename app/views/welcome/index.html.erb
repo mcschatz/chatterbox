@@ -5,7 +5,7 @@
         <% if current_user %>
           <h1><p>Hello, <%= link_to current_user.name, profile_path %></p></h1>
           <% else %>
-              <h1>Welcome to ChatterBox. Let out your inner Chatty Cathy</h1>
+              <h1>Welcome to ChatterBox. Let out your inner Chatty Cathy.</h1>
               <h1><%= link_to "Sign in with Twitter", login_path %></h1>
           <% end %>
       </div>

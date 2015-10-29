@@ -7,4 +7,5 @@ Rails.application.routes.draw do
   get "/profile", to: "users#show"
 
   resources :tweets, only: [:create]
+  post 'retweets', to: 'tweets#retweet'
 end

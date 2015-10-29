@@ -16,20 +16,18 @@
       </div>
 
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <% if current_user %>
         <ul class="nav navbar-nav">
           <li><%= link_to "Feed", profile_path %><span class="sr-only">(current)</span></a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right" id="navbar">
-            <% if current_user %>
               <li>
-                <a href="/profile">
-                  <%= "Hello, #{current_user.name}." %>
-                </a>
+                <a href="/profile"><%= "Hello, #{current_user.name}." %></a>
               </li>
               <li>
                 <%= link_to "Logout", logout_path %>
               </li>
-            <% end %>
+        <% end %>
         </ul>
       </div>
     </div>
