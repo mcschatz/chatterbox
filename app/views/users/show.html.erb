@@ -4,13 +4,13 @@
       <div class="panel panel-default">
         <div class="panel-heading">
             <%= image_tag current_user.image %>
-            <span><strong>@<%= link_to current_user.screen_name, "https://twitter.com/#{current_user.screen_name}" %></strong></span>
+            <span><strong>@<%= link_to @user.screen_name, "https://twitter.com/#{@user.screen_name}" %></strong></span>
         </div>
         <div class="panel-body">
           <h4>
-            <span style="padding: 20px">Tweets: <%= current_user.tweet_count %></span>
-            <span style="padding: 20px">Following: <%= current_user.friends_count %></span>
-            <span style="padding: 20px">Followers: <%= current_user.follower_count %></span>
+            <span style="padding: 20px">Tweets: <%= @user.tweets_count %></span>
+            <span style="padding: 20px">Following: <%= @user.friends_count %></span>
+            <span style="padding: 20px">Followers: <%= @user.followers_count %></span>
           </h4>
         </div>
       </div>
@@ -33,22 +33,23 @@
       </div>
     </div>
   </div>
-  <div class="row">
+  <div class="container">
+  <div class="row well">
     <div class="col-md-6 col-md-offset-3">
       <h1>Latest Tweets</h1>
-      <% current_user.home_timeline.each do |tweet| %>
+      <% @feed.each do |tweet| %>
       <div class="panel panel-default">
-        <div class="panel-heading">
+        <div class="panel-heading" id="tweet-header">
              <%= image_tag tweet.user.profile_image_url %>
              <span><strong>@<%= link_to tweet.user.screen_name, "https://twitter.com/#{tweet.user.screen_name}" %></span></strong>
         </div>
         <div class="panel-body">
           <p><%= tweet.full_text %></p>
-            <span class="unfollow"><%= link_to "Unfollow", unfollow_path(user_id: tweet.user.id) %></span>
+            <span class="unfollow" style="padding: 20px"><%= link_to("Unfollow", unfollow_path(user_id: tweet.user.id), method: :post) %></span>
             <span class="reply"><%= link_to(replies_path(user_id: tweet.user.id), method: :post) do %></span>
               <span class="glyphicon glyphicon-share-alt" style="padding: 20px"></span>
             <% end %>
-            <span class="favorite"><%= link_to favorites_path(tweet_id: tweet.id) do %></span>
+            <span class="favorite"><%= link_to(favorites_path(tweet_id: tweet.id), method: :post) do %></span>
               <span class="glyphicon glyphicon-star-empty" style="padding: 20px"></span>
             <% end %>
             <span class="retweet"><%= link_to(retweets_path(tweet_id: tweet.id), method: :post) do %></span>
@@ -58,4 +59,5 @@
       <% end %>
     </div>
   </div>
+</div>
 </section>

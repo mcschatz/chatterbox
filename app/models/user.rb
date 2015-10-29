@@ -1,15 +1,4 @@
 class User < ActiveRecord::Base
-  delegate :home_timeline,
-           :user_timeline,
-           :follower_count,
-           :tweet_count,
-           :friends_count,
-           :mentions,
-           :tweet,
-           :favorite,
-           :unfavorite,
-           :retweet,
-           :unfollow, to: :twitter_client
 
   def self.from_omniauth(auth_info)
     user = User.find_or_create_by(uid: auth_info.uid)
@@ -29,6 +18,15 @@ class User < ActiveRecord::Base
   end
 
   def twitter_client
-    @service ||= TwitterService.new(self)
+    @connection ||= Twitter::REST::Client.new do |config|
+      config.consumer_key        = ENV["twitter_publishable_key"]
+      config.consumer_secret     = ENV["twitter_secret_key"]
+      config.access_token        = oauth_token
+      config.access_token_secret = oauth_token_secret
+    end
+  end
+
+  def reply(user)
+    connection.in_reply_to_user_id(user)
   end
 end

@@ -28,7 +28,7 @@ RSpec.feature "TwitterServices:", type: :feature do
     VCR.use_cassette('twitter_user') do
       service = TwitterService.new(user)
       user_home_timeline = service.home_timeline
-      expect(user_home_timeline.count).to eq(18)
+      expect(user_home_timeline.count).to eq(20)
     end
   end
 
