@@ -14,7 +14,15 @@ gem 'bootstrap_form'
 gem 'figaro'
 gem 'twitter'
 
-group :development, :test do
+group :development do
+  gem 'pry'
+end
+
+group :test do
+  gem 'vcr'
+  gem 'webmock'
   gem 'pry'
   gem 'capybara'
+  gem 'rspec-rails'
+  gem 'simplecov'
 end

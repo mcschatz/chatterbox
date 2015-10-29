@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
-  delegate :timeline,
+  delegate :home_timeline,
+           :user_timeline,
            :follower_count,
            :tweet_count,
            :friends_count,
