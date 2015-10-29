@@ -1,0 +1,13 @@
+<div class="well bs-component">
+  <%= form_for :tweet, url: tweets_path do |f| %>
+    <fieldset>
+      <div class="form-group">
+        <label for="textArea" class="col-lg-2 control-label">Compose New Tweet</label>
+        <div class="col-lg-10">
+          <textarea name="tweet" class="form-control control" rows="3" id="textArea"></textarea>
+        </div>
+      </div>
+          <%= f.submit "Tweet!", class: "btn btn-primary" %>
+    </fieldset>
+  <% end %>
+</div>

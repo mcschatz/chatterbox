@@ -2,62 +2,20 @@
   <div class="row">
     <div class="col-md-6 col-md-offset-3">
       <div class="panel panel-default">
-        <div class="panel-heading">
-            <%= image_tag current_user.image %>
-            <span><strong>@<%= link_to @user.screen_name, "https://twitter.com/#{@user.screen_name}" %></strong></span>
-        </div>
-        <div class="panel-body">
-          <h4>
-            <span style="padding: 20px">Tweets: <%= @user.tweets_count %></span>
-            <span style="padding: 20px">Following: <%= @user.friends_count %></span>
-            <span style="padding: 20px">Followers: <%= @user.followers_count %></span>
-          </h4>
-        </div>
+        <%= render partial: 'profile' %>
       </div>
     </div>
   </div>
   <div class="row create-tweet">
     <div class="col-md-6 col-md-offset-3">
-      <div class="well bs-component">
-        <%= form_for :tweet, url: tweets_path do |f| %>
-          <fieldset>
-            <div class="form-group">
-              <label for="textArea" class="col-lg-2 control-label">Compose New Tweet</label>
-              <div class="col-lg-10">
-                <textarea name="tweet" class="form-control control" rows="3" id="textArea"></textarea>
-              </div>
-            </div>
-                <%= f.submit "Tweet!", class: "btn btn-primary" %>
-          </fieldset>
-        <% end %>
-      </div>
+      <%= render partial: 'tweet' %>
     </div>
   </div>
   <div class="container">
-  <div class="row well">
-    <div class="col-md-6 col-md-offset-3">
-      <h1>Latest Tweets</h1>
-      <% @feed.each do |tweet| %>
-      <div class="panel panel-default">
-        <div class="panel-heading" id="tweet-header">
-             <%= image_tag tweet.user.profile_image_url %>
-             <span><strong>@<%= link_to tweet.user.screen_name, "https://twitter.com/#{tweet.user.screen_name}" %></span></strong>
-        </div>
-        <div class="panel-body">
-          <p><%= tweet.full_text %></p>
-            <span class="unfollow" style="padding: 20px"><%= link_to("Unfollow", unfollow_path(user_id: tweet.user.id), method: :post) %></span>
-            <span class="reply"><%= link_to(replies_path(user_id: tweet.user.id), method: :post) do %></span>
-              <span class="glyphicon glyphicon-share-alt" style="padding: 20px"></span>
-            <% end %>
-            <span class="favorite"><%= link_to(favorites_path(tweet_id: tweet.id), method: :post) do %></span>
-              <span class="glyphicon glyphicon-star-empty" style="padding: 20px"> <%= tweet.favorite_count%></span>
-            <% end %>
-            <span class="retweet"><%= link_to(retweets_path(tweet_id: tweet.id), method: :post) do %></span>
-              <span class="glyphicon glyphicon-retweet" style="padding: 20px"> <%= tweet.retweet_count%></span>
-            <% end %>
-        </div>
-      <% end %>
+    <div class="row well">
+      <div class="col-md-6 col-md-offset-3">
+        <%= render partial: 'feed' %>
+      </div>
     </div>
   </div>
-</div>
 </section>

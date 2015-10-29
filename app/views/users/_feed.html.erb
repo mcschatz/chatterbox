@@ -1,0 +1,22 @@
+<h1>Latest Tweets</h1>
+  <% @feed.each do |tweet| %>
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <%= image_tag tweet.user.profile_image_url %>
+      <span><strong>@<%= link_to tweet.user.screen_name, "https://twitter.com/#{tweet.user.screen_name}" %></span></strong>
+    </div>
+    <div class="panel-body">
+      <p><%= tweet.full_text %></p>
+        <span class="unfollow" style="padding: 20px"><%= link_to("Unfollow", unfollow_path(user_id: tweet.user.id), method: :post) %></span>
+        <span class="reply"><%= link_to(replies_path(user_id: tweet.user.id), method: :post) do %></span>
+          <span class="glyphicon glyphicon-share-alt" style="padding: 20px"></span>
+        <% end %>
+        <span class="favorite"><%= link_to(favorites_path(tweet_id: tweet.id), method: :post) do %></span>
+          <span class="glyphicon glyphicon-star-empty" style="padding: 20px"> <%= tweet.favorite_count%></span>
+        <% end %>
+        <span class="retweet"><%= link_to(retweets_path(tweet_id: tweet.id), method: :post) do %></span>
+          <span class="glyphicon glyphicon-retweet" style="padding: 20px"> <%= tweet.retweet_count%></span>
+        <% end %>
+    </div>
+  <% end %>
+  </div>
