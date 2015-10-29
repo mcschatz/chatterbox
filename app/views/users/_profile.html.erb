@@ -1,5 +1,5 @@
 <div class="panel-heading">
-    <%= image_tag current_user.image %>
+    <%= image_tag @user.profile_image_url %>
     <span><strong>@<%= link_to @user.screen_name, "https://twitter.com/#{@user.screen_name}" %></strong></span>
 </div>
 <div class="panel-body">
