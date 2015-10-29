@@ -41,6 +41,7 @@
         <div class="panel-heading">
              <%= image_tag tweet.user.profile_image_url %>
              <span><strong><%= tweet.user.screen_name %></span></strong>
+             <%= button_to "Unfollow", unfollow_path(id: tweet.user.id) %>
         </div>
         <div class="panel-body">
           <p><%= tweet.full_text %></p>

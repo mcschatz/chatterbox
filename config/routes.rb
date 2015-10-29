@@ -5,7 +5,9 @@ Rails.application.routes.draw do
   get "/logout", to: "sessions#destroy"
   get "/auth/twitter/callback", to: "sessions#create"
   get "/profile", to: "users#show"
+  post 'unfollow', to: 'users#unfollow'
 
   resources :tweets, only: [:create]
   post 'retweets', to: 'tweets#retweet'
+
 end
